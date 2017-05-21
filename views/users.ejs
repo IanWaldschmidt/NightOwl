@@ -1,0 +1,33 @@
+<% include header %>
+<style>
+  .hidden {display: none;}
+</style>
+<div class = "container">
+  <header class = "jumbotron">
+    <h1 "text-align: center"><%= results.username %>'s Information</h1>
+    <span style="display:none;" id="username"><%= results.username %></span>
+  </header>
+  <div>
+    <h4>USERNAME: <%=results.username%></h4>
+    <h4 class="hidden">PASSWORD: <%=results.password%></h4>
+    <h4 class="hidden">EMAIL: <%=results.email%></h4>
+    <h4 class="hidden">COUNTRY: <%=results.country%></h4>
+    <h4 class="hidden">BIRTHDATE: <%=new Date(results.birthdate).toLocaleDateString()%></h4>
+    <h4 class="hidden">GENDER: <%=results.gender%></h4>
+  </div>
+  <div class="hidden">
+    <button onclick="update()">Update your information</button>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+    var pageUsername = $('#username')[0].textContent;
+    var cookieUsername = Cookies.get("username");
+    //If user is signed in, unhide all hidden information
+    if(pageUsername === cookieUsername){ $('.hidden').removeClass('hidden'); }
+  });
+  //Send the user to a different page to update user information
+  function update(){
+    window.location.replace("/updateuser/" + Cookies.get("username"));
+  }
+</script>

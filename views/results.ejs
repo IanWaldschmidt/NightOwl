@@ -1,0 +1,21 @@
+<% include header %>
+<div class = "container">
+  <header class = "jumbotron">
+      <h1 class="text-center">Your Search Results</h1>
+  </header>
+  <div align="center" style="font-size:25px">
+    <table style="width:60%">
+      <tr>
+        <td align="center"><b>Name</b></td>
+        <td align="center"><b>Media Type</b></td>
+        <td align="center"><b>URL</b></td>
+      <% results.forEach(function(result){ %>
+        <tr>
+          <td align="center"><%= result.name %></td>
+          <td align="center"><%= mediaType %></td>
+          <td align="center"><a href="/media/<%= mediaType %>/<%= result.mediaID %>">Link</a></td>
+        </tr>
+      <% }); %>
+    </table>
+  </div>
+</div>

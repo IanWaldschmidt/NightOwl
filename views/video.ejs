@@ -1,0 +1,40 @@
+<% include header %>
+<div class = "container">
+  <header class = "jumbotron">
+      <h1 class="text-center"><%=results.name%></h1>
+  </header>
+  <div align="center">
+    <video width="320" height="240" controls>
+      <source src = "/multimedia/<%=results.mediaID %>" type="video/mp4">
+    </video>
+    <h2 class="text-center">Duration: <%=results.duration %></h2>
+    <h2 class="text-center">Description: <%=results.description %></h2>
+    <span style="display:none;" id="mediaID"><%= results.mediaID %></span>
+    <hr style="margin-top:25px; margin-bottom:25px; border-top: 1px solid black;" >
+    <table style="width: 100%;">
+      <tr>
+        <td>
+          <% results.comments.forEach(function(comment){ %>
+            <span> <%= comment.commentUsername %> gave this a <%= comment.rating %>/10 and said: <%= comment.comments %> </span> <br/>
+          <% }); %>
+        </td>
+        <td>
+          <div align="right">
+            <a href="/comments/video/<%= results.mediaID %>" class = "btn btn-lg btn-primary">Add a comment</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $.ajax('/addView',{
+      type: 'POST',
+      data: {
+        username: Cookies.get("username"),
+        mediaID: $("#mediaID")[0].textContent
+      }
+    });
+  });
+</script>

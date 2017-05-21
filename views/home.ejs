@@ -1,0 +1,127 @@
+<% include header %>
+<div class="container">
+<style>
+	table{
+		border-collapse: collapse;
+		border: 1px solid #000000;
+	}
+	table td{
+		border: 1px solid #000000;
+		text-align: center;
+	}
+	.firstcol{
+		width: 200px;
+	}
+</style>
+  <h1 style = "text-align: center">Welcome to NightOwl</h1>
+  <hr style="margin-top:25px; margin-bottom:25px; border-top: 1px solid black;" >
+  <h3 align="center">Pictures</h3>
+  <table id="Pictures" width="100%">
+  	<tr>
+  		<td class="firstcol">Most Popular This Week</td>
+  		<% results.pic_viewWeekSQL.forEach(function(result){ %>
+  			<td><a href="/media/picture/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Most Popular To Date</td>
+  		<% results.pic_viewAllTimeSQL.forEach(function(result){ %>
+  			<td><a href="/media/picture/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Highest Rated</td>
+  		<% results.pic_ratingSQL.forEach(function(result){ %>
+  			<td><a href="/media/picture/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Random Recommendation</td>
+  		<% results.pic_randSQL.forEach(function(result){ %>
+  			<td><a href="/media/picture/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  </table>
+  <h3 align="center">Music</h3>
+  <table id="Music" width="100%">
+  	<tr>
+  		<td class="firstcol">Most Popular This Week</td>
+  		<% results.mus_viewWeekSQL.forEach(function(result){ %>
+  			<td><a href="/media/music/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Most Popular To Date</td>
+  		<% results.mus_viewAllTimeSQL.forEach(function(result){ %>
+  			<td><a href="/media/music/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Highest Rated</td>
+  		<% results.mus_ratingSQL.forEach(function(result){ %>
+  			<td><a href="/media/music/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Random Recommendation</td>
+  		<% results.mus_randSQL.forEach(function(result){ %>
+  			<td><a href="/media/music/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  </table>
+  <h3 align="center">Videos</h3>
+  <table id="Videos" width="100%">
+  	<tr>
+  		<td class="firstcol">Most Popular This Week</td>
+  		<% results.vid_viewWeekSQL.forEach(function(result){ %>
+  			<td><a href="/media/video/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Most Popular To Date</td>
+  		<% results.vid_viewAllTimeSQL.forEach(function(result){ %>
+  			<td><a href="/media/video/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Highest Rated</td>
+  		<% results.vid_ratingSQL.forEach(function(result){ %>
+  			<td><a href="/media/video/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Random Recommendation</td>
+  		<% results.vid_randSQL.forEach(function(result){ %>
+  			<td><a href="/media/video/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  </table>
+  <h3 align="center">Movies</h3>
+  <table id="Movies" width="100%">
+  	<tr>
+  		<td class="firstcol">Most Popular This Week</td>
+  		<% results.mov_viewWeekSQL.forEach(function(result){ %>
+  			<td><a href="/media/movie/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Most Popular To Date</td>
+  		<% results.mov_viewAllTimeSQL.forEach(function(result){ %>
+  			<td><a href="/media/movie/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Highest Rated</td>
+  		<% results.mov_ratingSQL.forEach(function(result){ %>
+  			<td><a href="/media/movie/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  	<tr>
+  		<td class="firstcol">Random Recommendation</td>
+  		<% results.mov_randSQL.forEach(function(result){ %>
+  			<td><a href="/media/movie/<%= result.mediaID %>"><%= result.name %></a></td>
+  		<% }); %>
+  	</tr>
+  </table>
+  <br/>
+</div>

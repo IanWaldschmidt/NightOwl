@@ -1,0 +1,44 @@
+<% include header %>
+<div class = "container">
+  <div class = "row">
+    <h1 style = "text-align: center">Sign Up for NightOwl</h1>
+    <div style = "width: 30%; margin: 25px auto;">
+      <form action = "/signup" method = "POST" onsubmit="login()">
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "username" placeholder = "username" id="username">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "password" name = "password" placeholder = "password">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "email" placeholder = "email">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "country" placeholder = "country">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "date" name = "birthdate" placeholder = "birthdate">
+        </div>
+        <div class = "form-group">
+          <select class = "form-control" name = "gender">
+            <option value = "M">Male</option>
+            <option value = "F">Female</option>
+          </select>
+        </div>
+        <div class = "form-group">
+          <button class = "btn btn-lg btn-primary btn-block">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  function login(){
+    //Create cookie indicating that you're signed in as the user.
+    console.log("here");
+    Cookies.set("username", $('#username').val());
+  }
+   //If you're going to the signup page, you shouldn't already be logged in.
+   //This also handles the case when the DBMS is unable to insert that user; we don't want them logged in as someone who doesn't exist.
+  $(document).ready(function(){ Cookies.remove("username"); });
+</script>

@@ -1,0 +1,28 @@
+<% include header %>
+<div class = "container">
+  <div class = "row">
+    <h1 style = "text-align: center">Login to NightOwl</h1>
+    <div style = "width: 30%; margin: 25px auto;">
+      <form action = "/login" method = "POST" onsubmit="login()">
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "username" placeholder = "username" id="username">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "password" name = "password" placeholder = "password">
+        </div>
+        <div class = "form-group">
+          <button class = "btn btn-lg btn-primary btn-block">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  function login(){
+    //Get username and assign it to the cookie, meaning you are logged in as that user.
+    Cookies.set("username", $('#username').val());
+  }
+   //If you're going to the signup page, you shouldn't already be logged in.
+   //This also handles the case when the DBMS is unable to insert that user; we don't want them logged in as someone who doesn't exist.
+  $(document).ready(function(){ Cookies.remove("username"); });
+</script>

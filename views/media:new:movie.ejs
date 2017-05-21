@@ -1,0 +1,46 @@
+<% include header %>
+<div class = "container">
+  <div class = "row">
+    <h1 style = "text-align: center">Add New Movie</h1>
+    <div style = "width: 30%; margin: 25px auto;">
+      <form action = "/media/new/movie" method = "POST" enctype="multipart/form-data">
+        <div class = "form-group">
+          <div class = "form-group">
+            <input class = "form-control" type = "text" name = "name" placeholder = "name">
+          </div>
+          <div class = "form-group">
+            <input class = "form-control" type = "text" name = "duration" placeholder = "duration">
+          </div>
+          <div class = "form-group">
+            <input class = "form-control" type = "text" name = "director" placeholder = "director">
+          </div>
+          <div class = "form-group">
+            <select class = "form-control" name = "ageRating">
+              <option value = "G">G</option>
+              <option value = "PG">PG</option>
+              <option value = "13">PG13</option>
+              <option value = "R">R</option>
+            </select>
+          </div>
+          <div class = "form-group" style="border:2px solid #ccc; width:300px; height: 100px; overflow-y: scroll;">
+            <% results.forEach(function(actor){%>
+              <input type="checkbox" name="<%= actor.name %>"> <%= actor.name %><br/>
+            <% }); %>
+          </div>
+          <a href = "/addActor" class = "btn btn-default" style="margin: 3px;">Add New Actor</a>
+          <div class = "form-group">
+            <input type = "file" name = "upload" accept = "application/x-zip-compressed,video/*">
+          </div>
+          <div class="form-group" style="display:none;">
+            <input class="form-control" type="text" name="uploader" id="uploader">
+          </div>
+        <div class = "form-group">
+          <button class = "btn btn-lg btn-primary btn-block" type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){ $("#uploader").attr("value", Cookies.get("username"));}); 
+</script>

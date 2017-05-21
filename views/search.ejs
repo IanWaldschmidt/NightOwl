@@ -1,0 +1,27 @@
+<% include header %>
+<h1 align="center">Search for media by Type and Name</h1>
+<div style = "width: 30%; margin: 25px auto;">
+	<form action="/search" method = "POST">
+		<div class="form-group">	
+			<select class="form-control" name="mediaType">
+	    		<option value="movie">Movie</option>
+			    <option value="picture">Picture</option>
+			    <option value="video">Video</option>
+			    <option value="music">Music</option>
+		    </select>
+		</div>
+		<div class="form-group">	
+			 <input class = "form-control" type = "text" name = "name" placeholder = "name">
+		</div>
+				<div class="form-group">	
+			<select class="form-control" name="filter">
+	    		<option value="rating">Rating</option>
+			    <option value="titleASC">Title Asc.</option>
+			    <option value="titleDESC">Title Desc.</option>
+		    </select>
+		</div>
+		<div class="form-group" >
+	        <button class = "btn btn-lg btn-primary btn-block">Search</button>
+		</div>
+	</form>
+</div>

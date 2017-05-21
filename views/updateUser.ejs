@@ -1,0 +1,54 @@
+<% include header %>
+<div class = "container">
+  <header class = "jumbotron">
+    <h1 align="center"><%= results.username %>'s Information</h1>
+  </header>
+<div class = "container">
+  <div class = "row">
+    <div style = "width: 30%; margin: 25px auto;" style="display:none;" id="container">
+      <form action = "/updateuser" method = "POST" onsubmit="login()">
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "username" value = "<%= results.username %>" id="username">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "password" name = "password" value = "<%= results.password %>">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "email" value = "<%= results.email %>">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "text" name = "country" value = "<%= results.country %>">
+        </div>
+        <div class = "form-group">
+          <input class = "form-control" type = "date" name = "birthdate" value = "<%= results.birthdate.toLocaleDateString().substring(6) + '-' + results.birthdate.toLocaleDateString().substring(0,2) + '-' + results.birthdate.toLocaleDateString().substring(3,5) %>">
+        </div>
+        <div class="form-group" style="display:none;" id="username">
+          <input class="form-control" type="text" name="oldUsername" value = "<%= results.username %>">
+        </div>
+        <div class = "form-group">
+          <select class = "form-control" name = "gender">
+            <option value = "M" <%= results.gender === 'M' ? 'selected' : '' %>>Male</option>
+            <option value = "F" <%= results.gender === 'F' ? 'selected' : '' %>>Female</option>
+          </select>
+        </div>
+        <div class = "form-group">
+          <button class = "btn btn-lg btn-primary btn-block">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  function login(){
+    //Make sure the login cookie is up to date with new information
+    Cookies.set("username", $('#username').val());
+  }
+
+  $(document).ready(function(){
+    var pageUsername = $('#username')[0].textContent;
+    if(Cookies.get("username") === pageUsername){
+      //Set hidden fields to visible because user is logged in
+      $('#container').removeAttr("style");
+    }
+  });
+</script>
